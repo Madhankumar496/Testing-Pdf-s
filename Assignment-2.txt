@@ -1,0 +1,88 @@
+package SeleniumBasics;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Assignment2 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		//open the browser
+				System.setProperty("webdriver.chrome.driver", "C:\\seleniumbrowserdriver\\chromedriver.exe");
+				WebDriver driver= new ChromeDriver();
+				
+				
+				driver.get("http://zero.webappsecurity.com");
+				Thread.sleep(2000);
+				//maximize the window
+				driver.manage().window().maximize();
+				
+				Thread.sleep(2000);
+				
+				//By ID
+				driver.findElement(By.id("signin_button")).click();
+				
+				//By Name
+				driver.findElement(By.name("user_login")).sendKeys("username");
+				
+				//By css selector -#id
+				driver.findElement(By.cssSelector("input#user_password")).sendKeys("password");
+				
+				//by css [attribute = value]
+				driver.findElement(By.cssSelector("input[type='checkbox']")).click();
+				
+				//by /tag +[@attribute= value]
+				driver.findElement(By.xpath("//input[@type='submit']")).click();
+				
+				driver.findElement(By.id("details-button")).click();
+				
+				//By link text
+				driver.findElement(By.linkText("Proceed to zero.webappsecurity.com (unsafe)")).click();
+				
+				//xpath with contains href 
+				driver.findElement(By.xpath("//a[contains(@href,'/bank/redirect.html?url=pay-bills.html\')]")).click();
+				
+				//By partial link text
+				driver.findElement(By.partialLinkText("Add ")).click();
+				Thread.sleep(2000);
+				
+				///xpath with . sign
+				driver.findElement(By.xpath(".//input[@id='np_new_payee_name']")).sendKeys("somename");
+				
+				////By id
+				driver.findElement(By.id("np_new_payee_address")).sendKeys("ugusdgugdug");
+				
+				driver.findElement(By.id("np_new_payee_account")).sendKeys("2463476373");
+				
+				driver.findElement(By.name("details")).sendKeys("gyugygfy");
+				
+				//by css tag id attribute
+				driver.findElement(By.cssSelector("input#add_new_payee[type='submit']")).click();
+				Thread.sleep(3000);
+				
+				//By abs xpath
+				driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[3]/a[1]")).click();
+				
+				//by rel path
+				driver.findElement(By.xpath("//a[@id='logout_link']")).click();
+				Thread.sleep(3000);
+				
+				
+				//xpath with contains text
+				driver.findElement(By.xpath("//strong[contains(text(),'Feedback')]")).click();
+				
+				//by css tag,id,attribute
+				driver.findElement(By.cssSelector("input#name[placeholder='Your Name']")).sendKeys("hgdhghdgggdgg");
+				
+				//by css tag.id
+				driver.findElement(By.cssSelector("#email")).sendKeys("uhsuigdiugdug@gmail.com");
+				
+				driver.findElement(By.xpath("//input[@id='subject']")).sendKeys("whgdhfdghg");
+				
+				driver.findElement(By.id("comment")).sendKeys("this is very big assignment");
+				
+				driver.findElement(By.xpath("//input[@value='Send Message']")).click();
+	}
+
+}

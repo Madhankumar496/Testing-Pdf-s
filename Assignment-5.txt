@@ -1,0 +1,267 @@
+package testng;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterSuite;
+
+public class Assignment5 {
+	
+	public WebDriver driver;
+	
+  @Test(groups= {"regression"})
+  
+  public void Test1() 
+  {
+	// Open URL
+		driver.get("http://zero.webappsecurity.com/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+
+
+		driver.findElement(By.id("signin_button")).click();
+		driver.findElement(By.name("user_login")).sendKeys("username");
+		driver.findElement(By.cssSelector("i.icon-question-sign")).click();
+		driver.findElement(By.cssSelector("[type='password']")).sendKeys("password");
+		driver.findElement(By.cssSelector("input#user_remember_me[name='user_remember_me']")).click();
+
+
+
+		driver.findElement(By.name("submit")).click();
+		driver.findElement(By.id("details-button")).click();
+		driver.findElement(By.partialLinkText("Proceed to zero")).click();
+		
+				driver.findElement(By.xpath("//a[contains(@href,'/bank/redirect.html?url=pay-bills.html\')]")).click();
+				
+				
+				driver.findElement(By.linkText("Purchase Foreign Currency")).click();
+			
+				driver.findElement(By.cssSelector("#purchase_cash")).click();
+				
+				Alert a=driver.switchTo().alert();
+				String msg=a.getText();
+				System.out.println("Text on Asert is::"+msg);
+				a.accept();	
+				driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[3]/a[1]")).click();
+				
+				driver.findElement(By.xpath("//a[@id='logout_link']")).click();
+				
+  }
+
+  @Test(groups= {"Smoke"})
+  public void Test2() 
+  {
+		driver.get("http://zero.webappsecurity.com/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+
+
+		driver.findElement(By.id("signin_button")).click();
+		driver.findElement(By.name("user_login")).sendKeys("username");
+		driver.findElement(By.cssSelector("i.icon-question-sign")).click();
+		driver.findElement(By.cssSelector("[type='password']")).sendKeys("password");
+		driver.findElement(By.cssSelector("input#user_remember_me[name='user_remember_me']")).click();
+		driver.findElement(By.name("submit")).click();
+//		driver.findElement(By.id("details-button")).click();
+//		driver.findElement(By.partialLinkText("Proceed to Text")).click();
+		
+		driver.findElement(By.linkText("Transfer Funds")).click();
+		driver.findElement(By.id("tf_amount")).sendKeys("3000");
+		driver.findElement(By.id("tf_description")).sendKeys("Amount is transferring");
+		
+		driver.findElement(By.xpath("//button[@id='btn_submit']")).click();
+		driver.findElement(By.cssSelector("#btn_submit")).click();
+		driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[3]/a[1]")).click();
+		
+		driver.findElement(By.xpath("//a[@id='logout_link']")).click();
+		System.out.println("test2 passed");
+		
+  }
+  /////////=====Incorrect password================================================
+  @Test(groups= {"regression"})
+  public void Test3() 
+  {
+  driver.get("http://zero.webappsecurity.com/");
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	
+
+
+	driver.findElement(By.id("signin_button")).click();
+	driver.findElement(By.name("user_login")).sendKeys("username");
+	driver.findElement(By.cssSelector("i.icon-question-sign")).click();
+	driver.findElement(By.cssSelector("[type='password']")).sendKeys("password123");
+	driver.findElement(By.cssSelector("input#user_remember_me[name='user_remember_me']")).click();
+	driver.findElement(By.name("submit")).click();
+	System.out.println("incorrect password");
+  }
+  
+  /////===============================In correct username================================
+  @Test(groups= {"regression"})
+  public void Test4() 
+  {
+  driver.get("http://zero.webappsecurity.com/");
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	
+
+
+	driver.findElement(By.id("signin_button")).click();
+	driver.findElement(By.name("user_login")).sendKeys("username1233");
+	driver.findElement(By.cssSelector("i.icon-question-sign")).click();
+	driver.findElement(By.cssSelector("[type='password']")).sendKeys("password123");
+	driver.findElement(By.cssSelector("input#user_remember_me[name='user_remember_me']")).click();
+	driver.findElement(By.name("submit")).click();
+	System.out.println("incorrect username");
+  }
+  
+  //////////////Invalid name in Add payee details=======================
+  @Test(groups= {"regression"})
+  public void Test5() {
+		driver.get("http://zero.webappsecurity.com/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+
+
+		driver.findElement(By.id("signin_button")).click();
+		driver.findElement(By.name("user_login")).sendKeys("username");
+		driver.findElement(By.cssSelector("i.icon-question-sign")).click();
+		driver.findElement(By.cssSelector("[type='password']")).sendKeys("password");
+		driver.findElement(By.cssSelector("input#user_remember_me[name='user_remember_me']")).click();
+		driver.findElement(By.name("submit")).click();
+	//xpath with contains href 
+		driver.findElement(By.xpath("//a[contains(@href,'/bank/redirect.html?url=pay-bills.html\')]")).click();
+		
+		WebDriverWait exWait = new WebDriverWait(driver, 7);
+		exWait.until(ExpectedConditions.urlToBe("http://zero.webappsecurity.com/bank/pay-bills.html"));
+		
+		//By partial link text
+		driver.findElement(By.partialLinkText("Add ")).click();
+		
+		
+		///xpath with . sign
+		driver.findElement(By.xpath(".//input[@id='np_new_payee_name']")).sendKeys("somename");
+		
+		////By id
+		driver.findElement(By.id("np_new_payee_address")).sendKeys("ugusdgugdug");
+		
+		driver.findElement(By.id("np_new_payee_account")).sendKeys("2463476373");
+		
+		driver.findElement(By.name("details"));
+		
+		//by css tag id attribute
+		driver.findElement(By.cssSelector("input#add_new_payee[type='submit']")).click();
+		
+		
+		//By abs xpath
+		driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[3]/a[1]")).click();
+		
+		//by rel path
+		driver.findElement(By.xpath("//a[@id='logout_link']")).click();
+		
+  }
+  ////=======================Blank Username and password=============================================
+  @Test(groups= {"regression"})
+  
+  public void Test6() 
+  {
+  driver.get("http://zero.webappsecurity.com/");
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	
+
+
+	driver.findElement(By.id("signin_button")).click();
+	driver.findElement(By.name("user_login"));
+	driver.findElement(By.cssSelector("i.icon-question-sign")).click();
+	driver.findElement(By.cssSelector("[type='password']"));
+	driver.findElement(By.cssSelector("input#user_remember_me[name='user_remember_me']")).click();
+	driver.findElement(By.name("submit")).click();
+	System.out.println("Blank username and password");
+  }
+  
+  
+  /////==============================valid username and password====================
+  @Test(groups= {"Smoke"})
+  public void Test7() 
+  {
+	  driver.get("http://zero.webappsecurity.com/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+
+
+		driver.findElement(By.id("signin_button")).click();
+		driver.findElement(By.name("user_login")).sendKeys("username");
+		driver.findElement(By.cssSelector("i.icon-question-sign")).click();
+		driver.findElement(By.cssSelector("[type='password']")).sendKeys("password");
+		driver.findElement(By.cssSelector("input#user_remember_me[name='user_remember_me']")).click();
+		System.out.println("valid username and password");
+  }
+  @BeforeMethod
+  public void beforeMethod() {
+	  System.out.println("Before method");
+  }
+
+  @AfterMethod
+  public void afterMethod() {
+	  System.out.println("After method");
+  }
+
+  @BeforeClass
+  public void beforeClass() {
+	  System.out.println("Before class");
+  }
+
+  @AfterClass
+  public void afterClass() {
+	  System.out.println("After class");
+  }
+
+  @BeforeTest
+  public void beforeTest() {
+	  
+		// Set system path for browser driver
+			System.setProperty("webdriver.chrome.driver", "C:\\seleniumbrowserdriver\\chromedriver.exe");
+			 driver= new ChromeDriver();
+		
+  }
+
+  @AfterTest
+  public void afterTest() {
+	// Close Browser
+		driver.close();
+		// Kill Browser
+		driver.quit();
+  }
+
+  @BeforeSuite
+  public void beforeSuite() {
+	  System.out.println("Zero-Bank Positive and negative scenerios Begining");
+  }
+
+  @AfterSuite
+  public void afterSuite() {
+	  System.out.println("Zero-Bank Positive and negative scenerios Ending");
+  }
+
+}

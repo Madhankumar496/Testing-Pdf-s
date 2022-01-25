@@ -1,0 +1,401 @@
+conditions
+====================
+// Relational Operators : == != > < >= <=
+        // Logical Operators : ! && ||
+
+        int age = 6;
+
+        if ((age >= 5) && (age <= 6)){
+
+            System.out.println("Go to Kindergarden");
+
+        } else if ((age >= 7) && (age <= 13)){
+
+            System.out.println("Go to Middle School");
+
+        } else if ((age >= 14) && (age <= 18)){
+
+            System.out.println("Go to High School");
+
+        } else {
+
+            System.out.println("Stay Home");
+        }
+==========================================================
+System.out.println("true || false = " + (true || false));
+        System.out.println("!true = " + (!true));
+
+        // The ternary operator returns the 1st value
+        // when the condition is true and the 2nd
+        // otherwise
+        boolean canVote = (age >= 18) ? true : false;
+        System.out.println("Can Vote : " + canVote);
+==========================================================
+// Switch is used when you have limited options
+        String lang = "Hindi";
+
+        switch(lang) {
+        case "Chile": case "Cuba":
+            System.out.println("Hola");
+
+            // Without break the next condition
+            // is checked
+            break;
+
+        case "France":
+            System.out.println("Bonjour");
+            break;
+
+
+        case "Japan":
+            System.out.println("Konnichiwa");
+            break;
+
+        default:
+            System.out.println("Hello");
+
+        }
+=============================================================
+//for loop
+for(int i=0; i<5; i++)
+{
+i=i +1;
+System.out.println(i);
+}
+
+// while loops as long as a condition is true
+        int wI = 0;
+        while (wI < 20) {
+
+            // Only print even numbers
+            if(wI % 2 == 0) {
+                System.out.println(wI);
+                wI++;
+                // Jump back to the beginning of loop
+                continue;
+            }
+            if(wI >= 10) {
+                // Stop looping
+                break;
+            }
+            wI++;
+        }
+============================================================================
+//do while executes at least once
+Scanner sc= new Scanner(System.in);
+int secretnum =7;
+int guess = 0;
+do{
+System.out.println("guess");
+if(sc.hasNextInt())
+{
+guess= sc.nextInt();
+}
+}
+while(secretnum !=guess);
+System.out.println(" u guess it");
+sc.close();
+
+====================================================================================================================
+
+// ############# CSS Locators ###############
+
+        //======== By id css = #idvalue
+
+        driver.findElement(By.cssSelector("#user_login")).sendKeys("username");
+
+        //======== By attribute css = [attribute=value]
+
+        driver.findElement(By.cssSelector("[type='password']")).sendKeys("password");
+
+        driver.findElement(By.linkText("Zero Bank")).click();
+
+        //======== By class css = .classname
+
+        driver.findElement(By.cssSelector(".search-query")).sendKeys("Fund transfer");
+
+        //======== By tag css = tag
+
+        driver.findElement(By.cssSelector("button")).click();
+
+//-------------------------
+
+        //======== By tag+id -- css = tag#id
+
+        driver.findElement(By.cssSelector("input#user_login")).sendKeys("username");
+
+        //======== By tag+class -- css = tag.classname
+
+        driver.findElement(By.cssSelector("i.icon-question-sign")).click();
+
+        //======== By tag+attribute -- css = tag[attribute=value]
+
+        driver.findElement(By.cssSelector("input[name='user_password']")).sendKeys("password");
+   
+
+        //-------------------------       
+
+        //======== By tag+id+attribute --- css = tag#id[attribute=value]
+
+        driver.findElement(By.cssSelector("input#user_remember_me[name='user_remember_me']")).click();
+
+        driver.findElement(By.name("submit")).click();
+
+        driver.findElement(By.id("details-button")).click();
+
+        driver.findElement(By.id("proceed-link")).click();
+
+        Thread.sleep(1000);
+
+        driver.findElement(By.linkText("Pay Bills")).click();
+
+        //======== By tag+class+attribute --- css = tag.classname[attribute=value]
+
+        driver.findElement(By.cssSelector("input.span1[required='required']")).sendKeys("90");
+
+        //======== By tag+class+id --- css = tag.classname#id
+
+        driver.findElement(By.cssSelector("input.span4#sp_description")).sendKeys("Pay bills for electricity");
+
+        //======== By tag+class+id+attribute --- css = tag.classname#id[attribute=value]
+
+        WebElement amountbox = driver.findElement(By.cssSelector("input.span1#sp_amount[type='text']"));
+
+        amountbox.clear();
+
+        amountbox.sendKeys("50");
+============================================================
+[1:12 PM] Shreyata Sugandhi (Guest)
+//click on a checkbox
+
+        WebElement rememberMeCheckbox = driver.findElement(By.id("user_remember_me"));
+
+        boolean rmcIsSelected = rememberMeCheckbox.isSelected();
+
+        boolean rmcIsdisplyed = rememberMeCheckbox.isDisplayed();
+
+        boolean rmcIsEnabled = rememberMeCheckbox.isEnabled();
+
+        if (rmcIsdisplyed) {​​​​​
+
+            System.out.println("Checkbox is displyed!");
+
+            if (rmcIsEnabled) {​​​​​
+
+                System.out.println("Checkbox is Enabled");
+
+                if (rmcIsSelected) {​​​​​
+
+                    System.out.println("Checkbox is Selected");                   
+
+                }​​​​​ else {​​​​​
+
+                    rememberMeCheckbox.click();
+
+                    System.out.println("Checkbox was not checked. I have checked it now!");
+
+                }​​​​​
+
+            }​​​​​ else {​​​​​
+
+                System.out.println("Checkbox is not Enabled. Cannot do anything further!");
+
+            }​​​​​
+
+        }​​​​​ else {​​​​​
+
+            System.out.println("Checkbox is NOT displyed!!!");
+
+        }​​​​​
+
+======================================================================================================
+////radio buttons
+// log into the application
+        driver.findElement(By.name("submit")).click();
+        driver.findElement(By.id("details-button")).click();
+        driver.findElement(By.id("proceed-link")).click();
+
+        Thread.sleep(1000);
+        // navigate to pay bill and Purchase Foreign Currency
+        driver.findElement(By.linkText("Pay Bills")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.linkText("Purchase Foreign Currency")).click();
+        Thread.sleep(1000);
+
+        // ########### working with Radio buttons ##############
+        WebElement radiobutton = driver.findElement(By.id("pc_inDollars_false"));
+
+        boolean drbIsSelected = radiobutton.isSelected();
+
+        if(!drbIsSelected) {
+            radiobutton.click();
+            System.out.println("Selected currency Redio button was not selected. I have selected now!");
+        }
+===================================================================================================================
+// ############# Select box #############
+        WebElement currency = driver.findElement(By.id("pc_currency"));
+        Select sel = new Select(currency);
+
+//        Select sel1 = new Select(driver.findElement(By.id("pc_currency")));
+//        new Select(driver.findElement(By.id("pc_currency"))).selectByVisibleText("Switzerland (franc)");
+
+        sel.selectByVisibleText("Denmark (krone)");
+        Thread.sleep(1000);
+        sel.selectByValue("GBP");
+        Thread.sleep(1000);
+        sel.selectByIndex(4);
+
+
+===============================================
+////Navigation cmds
+//maximize the window
+driver.manage().window().maximize();
+
+driver.navigate().to("http://www.selenium.dev/");
+driver.navigate().back();
+Thread.sleep(2000);
+driver.navigate().forward();
+driver.navigate().refresh();
+========================================
+////get methods
+   ///get title
+String title = driver.getTitle();
+System.out.println(title);
+   //get page source
+System.out.println(driver.getPageSource());
+==================================
+driver.findElement(By.id("onlineBankingMenu")).click();
+
+//get url
+String url= driver.getCurrentUrl();
+System.out.println(url);
+
+////get text
+
+String header = driver.findElement(By.id("money_map_link")).getText();
+System.out.println(header);
+
+String errorMsg = driver.findElement(By.xpath("//form[@id= 'login_form']/div[1]")).getText();
+System.out.println(errorMsg);
+
+//get attribute
+WebElement passbox = driver.findElement(By.name("user_password"));
+
+String typeOfBox = passbox.getAttribute("type");
+System.out.println(typeOfBox);
+
+//get class
+String name= passbox.getclass();
+System.out.println(name);
+===========================================================
+////Assertion
+
+// Validation
+
+        String expectedTitle = "Zero - Personal Banking - Loans - Credit Cards";
+
+        String actualTitle = driver.getTitle();
+
+//       
+
+//        if(actualTitle == expectedTitle) {​​​​​
+
+//            System.out.println("Pass");
+
+//        }​​​​​ else {​​​​​
+
+//            System.out.println("Fail");
+
+//            System.out.println(actualTitle);
+
+//        }​​​​​
+
+        assertEquals(actualTitle, expectedTitle);
+
+
+//if test fails with message
+  
+ assertEquals(actualTitle, expectedTitle,"the application is not opened");
+
+/ ############ Verification ################
+        try {
+            String brand = driver.findElement(By.className("brand")).getText();
+            assertEquals(brand, "Zero Bank +1");
+        } catch (AssertionError e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+
+//////////////////OR Method 2
+SoftAssert sa = new SoftAssert();
+String brand = driver.findElement(By.className("brand")).getText();
+            assertEquals(brand, "Zero Bank +1", "test fail ! /n");
+driver.findElement(By.id("searchTerm")).sendKeys("Funds Transfer");
+
+sa.assertAll();
+================================================================================
+#alert====
+
+public class AlertandPopup {
+
+
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub\
+
+
+
+System.setProperty("webdriver.chrome.driver", "C:\\SeleniumBrowserDriver\\chromedriver.exe");
+
+
+WebDriver driver = new ChromeDriver();
+
+driver.get("http://the-internet.herokuapp.com/javascript_alerts");
+
+driver.manage().window().maximize();
+
+driver.findElement(By.xpath("//button[text()='Click for JS Alert']")).click();
+
+Alert alert = driver.switchTo().alert();
+
+System.out.println(alert.getText());
+
+alert.accept();
+
+assertEquals(driver.findElement(By.id("result")).getText(), "You successfully clicked an alert", "String mismtach");
+
+System.out.println("***Run Successful****");
+
+driver.close();
+
+driver.quit();
+
+}
+}
+
+=============second method===============
+
+import static org.testng.Assert.assertEquals;
+
+
+import this package
+
+
+
+driver.findElement(By.xpath("//button[contains(text(),'Click for JS Alert')]")).click();
+Alert a=driver.switchTo().alert();
+String msg=a.getText();
+System.out.println("Text on Asert is::"+msg);
+a.accept();
+assertEquals(driver.findElement(By.xpath("//p[@id='result']")).getText(),"You successfully clicked an alert","Test Failed");
+
+
+
+
+
+
+
+
+
+
